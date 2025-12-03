@@ -9,6 +9,7 @@ A React component that displays GeoServer layers using WMS (Web Map Service) wit
 - Style selection and management
 - Automatic zoom to layer extent
 - Interactive configuration panel
+- Password protection
 - Error handling and validation
 - Easy to customize and integrate
 
@@ -19,12 +20,23 @@ A React component that displays GeoServer layers using WMS (Web Map Service) wit
 npm install
 ```
 
-2. Start the development server:
+2. **Set up password protection** (optional but recommended):
+   - Copy `.env.example` to `.env`:
+     ```bash
+     cp .env.example .env
+     ```
+   - Edit `.env` and set your password:
+     ```
+     VITE_SITE_PASSWORD=your_secure_password_here
+     ```
+   - For GitHub Pages deployment, add the password as a GitHub Secret (see Deployment section)
+
+3. Start the development server:
 ```bash
 npm run dev
 ```
 
-3. Open your browser to the URL shown in the terminal (typically `http://localhost:5173`)
+4. Open your browser to the URL shown in the terminal (typically `http://localhost:5173`)
 
 ## Usage
 
@@ -117,11 +129,20 @@ This project is configured for automatic deployment to GitHub Pages using GitHub
    base: '/'
    ```
 
-2. **Push to Main Branch**:
+2. **Set Password for Production** (if using password protection):
+   - Go to your repository → **Settings** → **Secrets and variables** → **Actions**
+   - Click **New repository secret**
+   - Name: `VITE_SITE_PASSWORD` (must be exactly this, case-sensitive)
+   - Value: Your desired password
+   - Click **Add secret**
+   - The workflow is already configured to use this secret (see `.github/workflows/deploy.yml`)
+   - For detailed instructions, see [GITHUB_SECRET_SETUP.md](GITHUB_SECRET_SETUP.md)
+
+3. **Push to Main Branch**:
    - The GitHub Actions workflow will automatically build and deploy when you push to `main` or `master` branch
    - You can also manually trigger deployment from the **Actions** tab → **Deploy to GitHub Pages** → **Run workflow**
 
-3. **Enable GitHub Pages** (after first deployment):
+4. **Enable GitHub Pages** (after first deployment):
    - Go to your repository on GitHub
    - Navigate to **Settings** → **Pages**
    - Under "Source", select **Deploy from a branch**
@@ -129,10 +150,11 @@ This project is configured for automatic deployment to GitHub Pages using GitHub
    - Click **Save**
    - Alternatively, if you see "GitHub Actions" as an option, you can select that instead
 
-4. **Access Your Site**:
+5. **Access Your Site**:
    - After deployment, your site will be available at:
      - `https://devgateway.github.io/CarbonDemo/` (for this repository)
      - `https://username.github.io/repo-name/` (for other repos)
+   - You'll be prompted for the password when accessing the site
 
 ### Manual Deployment (Alternative)
 

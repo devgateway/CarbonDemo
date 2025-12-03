@@ -30,6 +30,7 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
+          VITE_SITE_PASSWORD: ${{ secrets.VITE_SITE_PASSWORD }}
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
