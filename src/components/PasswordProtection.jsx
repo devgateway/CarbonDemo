@@ -50,7 +50,7 @@ const PasswordProtection = ({ children }) => {
     <div className="password-protection">
       <div className="password-container">
         <div className="password-header">
-          <h2>🔒 Protected Area</h2>
+          <h2>🔒 Protected Site</h2>
           <p>Please enter the password to access this site</p>
         </div>
         <form onSubmit={handleSubmit} className="password-form">
