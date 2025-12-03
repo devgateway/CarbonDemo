@@ -103,6 +103,66 @@ npm run build
 
 The built files will be in the `dist` directory.
 
+## Deployment to GitHub Pages
+
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
+
+### Automatic Deployment (Recommended)
+
+1. **Enable GitHub Pages**:
+   - Go to your repository on GitHub
+   - Navigate to **Settings** → **Pages**
+   - Under "Source", select **GitHub Actions**
+   - Save the settings
+
+2. **Configure Base Path** (if needed):
+   - If your repository is NOT named `username.github.io`, update the `base` path in `vite.config.js`:
+   ```javascript
+   base: '/your-repo-name/'
+   ```
+   - If your repository IS named `username.github.io`, set base to `'/'`:
+   ```javascript
+   base: '/'
+   ```
+
+3. **Push to Main Branch**:
+   - The GitHub Actions workflow will automatically build and deploy when you push to `main` or `master` branch
+   - You can also manually trigger deployment from the **Actions** tab → **Deploy to GitHub Pages** → **Run workflow**
+
+4. **Access Your Site**:
+   - After deployment, your site will be available at:
+     - `https://username.github.io/geoserver_test/` (if repo is `geoserver_test`)
+     - `https://username.github.io/` (if repo is `username.github.io`)
+
+### Manual Deployment (Alternative)
+
+If you prefer to deploy manually:
+
+1. Install `gh-pages` package:
+   ```bash
+   npm install --save-dev gh-pages
+   ```
+
+2. Add deploy script to `package.json`:
+   ```json
+   "scripts": {
+     "deploy": "npm run build && gh-pages -d dist"
+   }
+   ```
+
+3. Update `vite.config.js` base path as described above
+
+4. Deploy:
+   ```bash
+   npm run deploy
+   ```
+
+### Troubleshooting
+
+- **404 Errors**: Make sure the `base` path in `vite.config.js` matches your repository name
+- **Assets Not Loading**: Check that all asset paths are relative (Vite handles this automatically)
+- **CORS Issues**: Ensure your GeoServer allows cross-origin requests from your GitHub Pages domain
+
 ## Styling Layers in GeoServer
 
 GeoServer provides powerful styling capabilities through SLD (Styled Layer Descriptor) and CSS. Here's what you can do:
