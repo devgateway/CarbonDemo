@@ -109,30 +109,30 @@ This project is configured for automatic deployment to GitHub Pages using GitHub
 
 ### Automatic Deployment (Recommended)
 
-1. **Enable GitHub Pages**:
-   - Go to your repository on GitHub
-   - Navigate to **Settings** → **Pages**
-   - Under "Source", select **GitHub Actions**
-   - Save the settings
-
-2. **Configure Base Path** (if needed):
-   - If your repository is NOT named `username.github.io`, update the `base` path in `vite.config.js`:
-   ```javascript
-   base: '/your-repo-name/'
-   ```
+1. **Configure Base Path**:
+   - Update the `base` path in `vite.config.js` to match your repository name
+   - For this repo (`CarbonDemo`), it's already set to `/CarbonDemo/`
    - If your repository IS named `username.github.io`, set base to `'/'`:
    ```javascript
    base: '/'
    ```
 
-3. **Push to Main Branch**:
+2. **Push to Main Branch**:
    - The GitHub Actions workflow will automatically build and deploy when you push to `main` or `master` branch
    - You can also manually trigger deployment from the **Actions** tab → **Deploy to GitHub Pages** → **Run workflow**
 
+3. **Enable GitHub Pages** (after first deployment):
+   - Go to your repository on GitHub
+   - Navigate to **Settings** → **Pages**
+   - Under "Source", select **Deploy from a branch**
+   - Select the `gh-pages` branch and `/ (root)` folder
+   - Click **Save**
+   - Alternatively, if you see "GitHub Actions" as an option, you can select that instead
+
 4. **Access Your Site**:
    - After deployment, your site will be available at:
-     - `https://username.github.io/geoserver_test/` (if repo is `geoserver_test`)
-     - `https://username.github.io/` (if repo is `username.github.io`)
+     - `https://devgateway.github.io/CarbonDemo/` (for this repository)
+     - `https://username.github.io/repo-name/` (for other repos)
 
 ### Manual Deployment (Alternative)
 

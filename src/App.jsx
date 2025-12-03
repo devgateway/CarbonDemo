@@ -10,7 +10,7 @@ function App() {
     layerName: 'carbon_pred_2024-05_100m_COG',
     crs: 'EPSG:3857', // Default to Web Mercator (Leaflet's default)
     style: '', // Style name from GeoServer (empty = default style)
-    legendTitle: '' // Custom legend title (empty = use layer title from GeoServer)
+    legendTitle: 'Carbon Prediction 2025' // Default legend title
   })
 
   const [layerKey, setLayerKey] = useState(0)

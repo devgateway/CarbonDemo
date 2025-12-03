@@ -400,7 +400,7 @@ const GeoServerMap = ({ config, onLoadLayer }) => {
         console.error('Error creating layer:', err)
       }
     }
-  }, [localConfig])
+  }, [localConfig.geoserverUrl, localConfig.workspace, localConfig.layerName, localConfig.crs, localConfig.style])
 
   // Fetch layer title when layer changes
   useEffect(() => {
